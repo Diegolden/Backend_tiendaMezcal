@@ -1,6 +1,6 @@
 import { CreateMezcalesDTO } from './DTO/create-mezcales';
 import { MezcalesService } from './mezcales.service';
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 
 @Controller('mezcales')
 export class MezcalesController {
@@ -19,5 +19,10 @@ export class MezcalesController {
     @Post()
     crearMezcales(@Body()Mezcales: CreateMezcalesDTO){
         return this.mez.createMezc(Mezcales);
+    }
+
+    @Delete(':id')
+    deleteUser(@Param('id') id: number): any {
+        return this.mez.deleteMezc(id);
     }
 }
